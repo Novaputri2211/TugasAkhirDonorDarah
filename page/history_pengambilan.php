@@ -59,7 +59,7 @@ while($row = $statement->fetch(PDO::FETCH_ASSOC)){
 
                 </tbody>
             </table>
-            <h1>Ksong</h1>
+            <p style="font-size: 22px; margin-top: 20px">Tidak ada data</p> 
             
 <?php } ?>
     </div>
