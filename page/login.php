@@ -1,8 +1,17 @@
 <div class="container">
+    
+   <div class="row justify-content-center">
+        <div style="text-align :center">
+            <img src="asset/img/pmi.png" style="width:150px;height:150px; ">
+        </div>
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+
+
                     <!-- Default form login -->
                     <form class="text-center" method="POST" action="aksi/aksi-login.php">
                         
@@ -15,7 +24,7 @@
 
 
                         <!-- Sign in button -->
-                        <button type="submit" name="btnLogin" class="btn btn-danger btn-block my-4">
+                        <button type="submit" name="btnLogin" class="btn btn-danger btn-block my-4 font-weight-bold">
                             Login
                         </button>
                         
@@ -26,4 +35,8 @@
             </div>
         </div>
     </div>
+    
+   
+
 </div>
+

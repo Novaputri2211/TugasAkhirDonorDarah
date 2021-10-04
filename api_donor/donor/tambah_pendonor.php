@@ -44,9 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     $kadar_hb = $_POST['kadar_hb'];
     $tanggal_donor = $_POST['tanggal_donor'];
     $jlh_kantong = $_POST['jlh_kantong'];
+    $ket_sehat = $_POST['ket_sehat'];
+    $ket_penyakit = $_POST['ket_penyakit'];
 
-    $query = "INSERT INTO tb_pendonor(id_user,nama_pendonor,tempat_lahir,tgl_lahir,umur,jekel,alamat,lat,lng,no_hp,gol_darah,bb,tensi,kadar_hb,tanggal_donor,jlh_kantong)
-                VALUES(:iduser, :nama_pendonor, :tempat_lahir, :tgl_lahir, :umur, :jekel, :alamat, :lat, :lng, :no_hp, :gol_darah, :bb, :tensi, :kadar_hb, :tanggal_donor, :jlh_kantong) ";
+    $query = "INSERT INTO tb_pendonor(id_user,nama_pendonor,tempat_lahir,tgl_lahir,umur,jekel,alamat,lat,lng,no_hp,gol_darah,bb,tensi,kadar_hb,tanggal_donor,jlh_kantong,ket_sehat,ket_penyakit,konfirmasi)
+                VALUES(:iduser, :nama_pendonor, :tempat_lahir, :tgl_lahir, :umur, :jekel, :alamat, :lat, :lng, :no_hp, :gol_darah, :bb, :tensi, :kadar_hb, :tanggal_donor, :jlh_kantong, :sehat , :penyakit, 0) ";
     $set = $conn->prepare($query);
     $set->bindParam(":iduser", $id_user);
     $set->bindParam(":nama_pendonor", $nama_pendonor);
@@ -64,6 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     $set->bindParam(":kadar_hb", $kadar_hb);
     $set->bindParam(":tanggal_donor", $tanggal_donor);
     $set->bindParam(":jlh_kantong", $jlh_kantong);
+    $set->bindParam(":sehat", $ket_sehat);
+    $set->bindParam(":penyakit", $ket_penyakit);
     $set->execute();
 
     $returnData = msg(1,200,'Input Pendonor Berhasil');

@@ -23,8 +23,11 @@ $returnData = [];
 if ($_SERVER["REQUEST_METHOD"] != "GET") {
     $returnData = msg(0,404,'Page Not Found');  
 }else {
-    $query = "SELECT * from tb_pendonor WHERE konfirmasi = 1 ORDER BY gol_darah";
+    $goldar = $_GET['goldar'];
+
+    $query = "SELECT * from tb_pendonor WHERE gol_darah = :gd AND konfirmasi = 1 AND jlh_kantong > 0";
     $set = $conn->prepare($query);
+    $set->bindParam(":gd", $goldar);
     $set->execute();
 
 if ($set->rowCount() > 0){

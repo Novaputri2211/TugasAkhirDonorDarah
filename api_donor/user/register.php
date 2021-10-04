@@ -33,17 +33,21 @@ $returnData = [];
     $token = "";
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    $q = "SELECT * FROM tb_user WHERE username = :username";
+    $q = "SELECT * FROM tb_user WHERE username = :username OR email = :email";
     $chkuser = $conn->prepare($q);
     $chkuser->bindParam(":username", $username);
+    $chkuser->bindParam(":email", $email);
     $chkuser->execute();
     $row = $chkuser->fetch(PDO::FETCH_ASSOC);
 
-    if (strlen($password) <  6) {
+    if (strlen($password) < 6) {
         $returnData = msg(0,202,'Password minimal 6 karakter');
     }elseif ($row['username'] == $username) {
         $returnData = msg(0,201,'Username sudah ada');
-    }else {
+    }elseif ($row['email'] == $email) {
+        $returnData = msg(0,201,'Email sudah ada');
+    }
+    else {
         $query = "INSERT INTO tb_user(nama,email,jenis_kelamin,username,password,token) 
               VALUES(:nama,:email,:jenis_kelamin,:uname,:pwd,:token)";
 
@@ -57,7 +61,6 @@ $returnData = [];
         $set->execute();
 
         $returnData = msg(1,200,'Register Berhasil');
-
     }
 
  }

@@ -10,6 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web Donor Darah</title>
+    
     <script src="asset/js/app.js" defer></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet">
@@ -27,7 +28,7 @@
     <div id="app">
         <!--Navbar -->
     <nav class="mb-5 navbar navbar-expand-lg navbar-light bg-danger navbar-fixed-top">
-        <a class="navbar-brand text-white" href="#" >Web Donor Darah</a>
+        <a class="navbar-brand text-white h2" href="#" >Web Admin Donor Darah</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
             aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,24 +39,29 @@
 <?php if(isset($_SESSION['id'])){ ?>
 
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">Pendonor
+            <li class="nav-item dropdown active" >
+                <a class="nav-link dropdown-toggle text-white h5" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="border: solid 2px white;">
+                    Pendonor
                 </a>
                 <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                <a class="nav-link" href="?page=confirm_donor">Konfirmasi Pendonor</a>
-                <a class="nav-link" href="?page=cek_donor">Cek Pendonor</a>
+                <a class="nav-link h5" href="?page=confirm_donor">Konfirmasi Pendonor</a>
+                <a class="nav-link h5" href="?page=cek_donor">Cek Pendonor</a>
                 </div>
             </li>
             
-            <li class="nav-item">
-                <a class="nav-link text-white" href="?page=cek_stok">Cek Stok Darah</a>
+            <li class="nav-item active" >
+                <a class="nav-link text-white h5" href="?page=cek_stok" style="border: solid 2px white;">Cek Stok Darah</a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link text-white h5" href="?page=history" style="border: solid 2px white;">History Pengambilan Darah</a>
             </li>
         </ul>
 
         <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white h5" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <?php echo $_SESSION['nama'] ?> <span class="caret"></span>
                         </a>
 
@@ -76,7 +82,7 @@
 <?php }else if (!isset($_SESSION['id'])) {
      ?>     
                 <li class="nav-item active">
-                        <a class="nav-link text-white" href="?page=login">Login</a>
+                        <a class="nav-link text-white h5" href="?page=login">Login</a>
                     </li>
                    
              
@@ -102,7 +108,8 @@
 
                     }elseif($_GET['page'] == 'confirm_donor'){
                         include_once('page/confirm_donor.php');       //pakai
-
+                    }elseif ($_GET['page'] == 'history') {
+                        include_once('page/history_pengambilan.php');
                     }
                 }else{
                     include_once('page/login.php');

@@ -8,7 +8,7 @@
                     <!-- Default form -->
                     <form class="p-5" method="POST" enctype="multipart/form-data">
                         
-                        <p class="h2 mb-5">Cek Stok Darah di PMI</p>
+                        <p class="h2 mb-5" style="text-align: center;">Cek Stok Darah di PMI</p>
                         <!-- Golongan Darah -->
                         <div class="form-row">
                             <div class="col-md-3 pt-2">
@@ -41,7 +41,7 @@
 
             <!-- Tabel B.indo-->
             <table class="table">
-                <thead class="red ligthen-1 white-text text-center">
+                <thead class="btn-danger ligthen-1 white-text text-center">
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Gol Darah</th>

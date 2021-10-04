@@ -45,11 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     $kadar_hb = $_POST['kadar_hb'];
     $tanggal_donor = $_POST['tanggal_donor'];
     $jlh_kantong = $_POST['jlh_kantong'];
+    $ket_sehat = $_POST['ket_sehat'];
+    $ket_penyakit = $_POST['ket_penyakit'];
 
     $query = "UPDATE tb_pendonor SET nama_pendonor = :nama, tempat_lahir = :tempat_lahir, tgl_lahir = :tgl_lahir,
     umur = :umur, jekel = :jekel, alamat = :alamat, lat = :lat, lng = :lng, no_hp = :no_hp, gol_darah = :gol_darah,
-    bb = :bb, tensi = :tensi, kadar_hb = :kadar_hb, tanggal_donor = :tanggal_donor, jlh_kantong = :jlh_kantong
-    WHERE id_pendonor = :id_pendonor
+    bb = :bb, tensi = :tensi, kadar_hb = :kadar_hb, tanggal_donor = :tanggal_donor, jlh_kantong = :jlh_kantong,
+    ket_sehat = :sehat, ket_penyakit = :penyakit WHERE id_pendonor = :id_pendonor
     ";
     $set = $conn->prepare($query);
     $set->bindParam(":id_pendonor", $id_pendonor);
@@ -68,6 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     $set->bindParam(":kadar_hb", $kadar_hb);
     $set->bindParam(":tanggal_donor", $tanggal_donor);
     $set->bindParam(":jlh_kantong", $jlh_kantong);
+    $set->bindParam(":sehat", $ket_sehat);
+    $set->bindParam(":penyakit", $ket_penyakit);
     $set->execute();
 
     $returnData = msg(1,200,'Update Pendonor Berhasil');

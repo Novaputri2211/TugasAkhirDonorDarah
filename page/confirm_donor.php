@@ -8,7 +8,7 @@
                     <!-- Default form-->
                     <form class="p-5" method="POST" enctype="multipart/form-data">
                         
-                        <p class="h2 mb-5">Konfirmasi Pendonor yang Menyediakan Darah</p>
+                        <p class="h2 mb-5" style="text-align: center;">Konfirmasi Pendonor yang Menyediakan Darah</p>
                         <!-- goldar -->
                         <div class="form-row">
                             <div class="col-md-3 pt-2">
@@ -40,7 +40,7 @@
             <!-- card get soal--> 
        
             <table class="table" style="width: 1100px;">
-                <thead class="red ligthen-1 white-text text-center">
+                <thead class="btn-danger ligthen-2 white-text text-center">
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
@@ -55,6 +55,8 @@
                 <tbody class="text-center">
                 <tr>
 <?php
+if ($statement->rowCount() > 0) {
+
 $count = 0;
 while($row = $statement->fetch(PDO::FETCH_ASSOC)){
 
@@ -74,10 +76,12 @@ while($row = $statement->fetch(PDO::FETCH_ASSOC)){
                     
                 </tr> 
 <?php
-}
+} }else{
 ?>
                 </tbody>
             </table>
+            <p style="font-size: 22px; margin-top: 20px">Tidak ada data</p>
+<?php } ?>
 
 <script language="javascript">
     function terima(str) {
